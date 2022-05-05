@@ -1,0 +1,40 @@
+Q:TOPICCHANGES
+None
+A:Đồ Gia Dụng
+Q: Cái bát đâu?
+assets/images/bat.jpeg
+assets/images/thia.jpeg
+A:assets/images/bat.jpeg
+Q: Bình sữa đâu?
+assets/images/coc.jpeg
+assets/images/binhsua.png
+A:assets/images/binhsua.png
+Q: Con dao đâu?
+assets/images/condao.jpeg
+assets/images/caixo.jpeg
+A:assets/images/condao.jpeg
+Q: Cái ghế đâu?
+assets/images/thia.jpeg
+assets/images/caighe.jpeg
+assets/images/caithot.jpeg
+A:assets/images/caighe.jpeg
+Q:TOPICCHANGES
+None
+A:Động vật
+Q: Con chó đâu?
+assets/images/dog.jpg
+assets/images/cat.jpg
+A:assets/images/dog.jpg
+Q: Con gà đâu?
+assets/images/duck.jpg
+assets/images/chicken.jpg
+A:assets/images/chicken.jpg
+Q:Con chuột đâu?
+assets/images/rat.jpg
+assets/images/rabit.jpg
+A:assets/images/rat.jpg
+Q:Con vịt đâu?
+assets/images/chicken.jpg
+assets/images/duck.jpg
+assets/images/bird.png
+A:assets/images/duck.jpg
