@@ -8,7 +8,11 @@ class Childlist extends StatefulWidget {
 }
 
 class _ChildlistState extends State<Childlist> {
-
+  int stage = 0;
+  String guidlines =
+    "Bạn có thể bấm vào dấu + để thêm thông tin của trẻ. Sau khi hoàn thành điền thông tin, bấm vào Làm bài để bắt đầu bài test";
+  String imagePaths =
+    "assets/guideImages/guide1.jpg";
   refresh(child) {
     setState(() {
       widget.childlist.add(child);
@@ -16,40 +20,71 @@ class _ChildlistState extends State<Childlist> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF112D4E),
-        title: Text("Thông tin của trẻ", style: TextStyle(fontSize: 24.0)),
-        centerTitle: true,
-      ),
-      body:
-      Card(
-          color: Color(0xFFF9F7F7),
-          borderOnForeground: true,
-          margin: EdgeInsets.all(20.0),
-          child:Column(
+    if (stage == 0) {
+      return Scaffold( body:SimpleDialog(
+        title: Center(child :Text("Hướng dẫn")),
+        contentPadding: EdgeInsets.all(10.0),
+        children: <Widget> [
+          Image(
+            image: AssetImage(imagePaths),
+            height: 350.0,
+          ),
+          SizedBox(height:10.0),
+          Center(child: Text(guidlines,
+            style: TextStyle(
+              fontSize: 16.0,
+            )
+          )),
+          SizedBox(height: 10.0),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FlatButton(
+                  onPressed: () {
+                      setState(() {
+                        stage = 1;
+                      });
+                  },
+                  child: Text("Đã hiểu"),
+                )
+              ])],
+      ));
+    } else {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFF112D4E),
+          title: Text("Thông tin của trẻ", style: TextStyle(fontSize: 24.0)),
+          centerTitle: true,
+        ),
+        body:
+        Card(
+            color: Color(0xFFF9F7F7),
+            borderOnForeground: true,
+            margin: EdgeInsets.all(20.0),
+            child:Column(
 
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: (widget.childlist.length != 0)? widget.childlist
-                  .map((child) => ChildCard(
-                  child: child,
-                  choose: () {
-                    Navigator.pushNamed(context, "/session");
-                  }))
-                  .toList(): [Text("Hiện chưa có trẻ nào trong danh sách")])),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF112D4E),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AddChild(childlist: widget.childlist, notifyParent: refresh),
-              ));
-        },
-        child: Icon(Icons.add_outlined),
-      ),
-    );
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: (widget.childlist.length != 0)? widget.childlist
+                    .map((child) => ChildCard(
+                    child: child,
+                    choose: () {
+                      Navigator.pushNamed(context, "/session");
+                    }))
+                    .toList(): [Text("Hiện chưa có trẻ nào trong danh sách")])),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xFF112D4E),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddChild(childlist: widget.childlist, notifyParent: refresh),
+                ));
+          },
+          child: Icon(Icons.add_outlined),
+        ),
+      );
+    }
   }
 }
 

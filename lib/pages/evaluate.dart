@@ -6,7 +6,6 @@ class Evaluate extends StatelessWidget {
       : super(key: key);
   final int score;
   final int total;
-
   String feedback(int score, int total) {
     int percentage = (score/total * 100).toInt();
     if (percentage <= 35)
@@ -18,14 +17,20 @@ class Evaluate extends StatelessWidget {
   }
 
   String advices(int score, int total) {
-    return "You are completely normal.";
+    int percentage = (score/total * 100).toInt();
+    if (percentage <= 35)
+      return "Bạn nên liên hệ với những cơ sở y tế chuyên môn để khám lại cho trẻ bởi vì trẻ đang có rất nhiều dấu hiệu của rối loạn phát triển ngôn ngữ.";
+    else if (percentage <= 60)
+      return "Bạn hãy cho trẻ test lại sau 3 tháng.";
+    else
+      return "Trẻ không có dấu hiệu rối loạn phát triển ngôn ngữ. Nếu bạn vẫn còn lo lắng, hãy cho trẻ test lại sau 6 tháng";
   }
 
   MaterialColor getProgressColor(score, total) {
     int percentage = (score/total * 100).toInt();
     if (percentage <= 35)
       return Colors.red;
-    else if (percentage <= 65)
+    else if (percentage <= 60)
       return Colors.yellow;
     else
       return Colors.green;
@@ -88,7 +93,7 @@ class Evaluate extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Gợi ý  cho gia đình: ",
+                            Text("Gợi ý cho gia đình: ",
                                 style: TextStyle(
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
@@ -96,6 +101,21 @@ class Evaluate extends StatelessWidget {
                             SizedBox(height:6.0),
                             Text("""Gia đình không cần phải lo lắng gì cho trẻ ở thời điểm này. Gia đình tiếp tục cho con giao tiếp, tiếp xúc và xây dựng các kỹ năng cho trẻ để trẻ có sự phát triển tốt nhất.
 Trong trường hợp gia đình vẫn còn băn khoăn, lo lắng, gia đình có nothể đưa trẻ đến các cơ sở y tế để trao đổi thêm với cán bộ chuyên môn hoặc có đánh giá chuyên sâu hơn về sự phát triển của trẻ."""),
+                          ]
+                      )
+                  ),
+                  SizedBox(height:15.0),
+                  Container(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Lời khuyên: ",
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            SizedBox(height:6.0),
+                            Text(advices(score, total)),
                           ]
                       )
                   )

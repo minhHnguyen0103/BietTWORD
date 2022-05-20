@@ -85,6 +85,12 @@ flutter:
     - assets/images/chicken.jpg
     - assets/images/duck.jpg
     - assets/images/bird.png
+    - assets/images/img.png
+    - assets/images/img_1.png
+    - assets/guideImages/guide1.jpg
+    - assets/guideImages/guide2.jpg
+    - assets/guideImages/guide3.jpg
+    - assets/guideImages/guide4.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
